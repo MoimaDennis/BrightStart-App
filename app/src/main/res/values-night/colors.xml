@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bs_bg">#0F2419</color>
+    <color name="bs_card">#1B3226</color>
+    <color name="bs_text">#F9F8F4</color>
+    <color name="bs_muted">#A8B8A0</color>
+    <color name="bs_accent">#B8E04A</color>
+    <color name="bs_on_accent">#0F2419</color>
+    <color name="bs_bar">#0A1810</color>
+</resources>

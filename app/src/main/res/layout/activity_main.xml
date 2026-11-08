@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/bs_bg">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/bs_bar"
+            android:padding="8dp" android:textSize="12sp" android:textColor="@color/bs_muted" android:text="🎓 Bright Start Education Support System"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/bs_bar"
+            android:padding="14dp" android:textSize="22sp" android:textStyle="bold" android:fontFamily="serif"
+            android:textColor="@color/bs_accent" android:text="BrightStart"/>
+        <ViewFlipper android:id="@+id/flipper" android:layout_width="match_parent" android:layout_height="260dp"
+            android:autoStart="true" android:flipInterval="4000"
+            android:inAnimation="@android:anim/fade_in" android:outAnimation="@android:anim/fade_out">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/slide1" android:contentDescription="Banner 1"/>
+                <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#A60F2419"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_vertical" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EDUCATION SUPPORT SYSTEM" android:textSize="11sp" android:textColor="#B8E04A"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Empowering Every Learner" android:fontFamily="serif" android:textStyle="bold" android:textSize="26sp" android:textColor="#FFFFFF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Centralised management for students, volunteers, and programs across South Africa's communities." android:textSize="13sp" android:textColor="#DDFFFFFF"/>
+                </LinearLayout>
+            </FrameLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/slide2" android:contentDescription="Banner 2"/>
+                <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#A60F2419"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_vertical" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VOLUNTEER MANAGEMENT" android:textSize="11sp" android:textColor="#B8E04A"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dedicated Volunteers, Real Impact" android:fontFamily="serif" android:textStyle="bold" android:textSize="26sp" android:textColor="#FFFFFF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Schedule tutoring sessions, assign volunteers, and track attendance all in one place." android:textSize="13sp" android:textColor="#DDFFFFFF"/>
+                </LinearLayout>
+            </FrameLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:src="@drawable/slide3" android:contentDescription="Banner 3"/>
+                <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#A60F2419"/>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_vertical" android:padding="20dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DONATION MANAGEMENT" android:textSize="11sp" android:textColor="#B8E04A"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Funding The Future Together" android:fontFamily="serif" android:textStyle="bold" android:textSize="26sp" android:textColor="#FFFFFF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Track every donation, generate instant receipts, and produce comprehensive impact reports." android:textSize="13sp" android:textColor="#DDFFFFFF"/>
+                </LinearLayout>
+            </FrameLayout>
+        </ViewFlipper>
+        <GridLayout android:id="@+id/grid" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:columnCount="2" android:padding="10dp"/>
+        <LinearLayout android:id="@+id/menu" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp"/>
+    </LinearLayout>
+</ScrollView>

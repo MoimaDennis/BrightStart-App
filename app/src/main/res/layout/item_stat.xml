@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1"
+    android:layout_margin="6dp" android:padding="16dp" android:orientation="vertical" android:background="@drawable/bs_card">
+    <TextView android:id="@+id/tvNum" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:fontFamily="serif" android:textStyle="bold" android:textColor="@color/bs_accent" android:textSize="30sp"/>
+    <TextView android:id="@+id/tvLabel" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:textColor="@color/bs_muted" android:textSize="13sp"/>
+</LinearLayout>
