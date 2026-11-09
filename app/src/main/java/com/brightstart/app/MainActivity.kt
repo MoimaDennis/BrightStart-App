@@ -18,24 +18,31 @@ class MainActivity : AppCompatActivity() {
         "Sessions" to "get_sessions.php", "Enrolments" to "get_enrolments.php", "Attendance" to "get_attendance.php",
         "Performance" to "get_performance.php", "Donations" to "get_donations.php")
 
+    private fun addBtn(parent: LinearLayout, label: String, click: () -> Unit) {
+        parent.addView(MaterialButton(this).apply {
+            text = label; cornerRadius = 100
+            backgroundTintList = ColorStateList.valueOf(getColor(R.color.bs_accent))
+            setTextColor(getColor(R.color.bs_on_accent))
+            setOnClickListener { click() }
+        })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Admin-only buttons (shown in onResume once we know the user's role)
+        val adminMenu = findViewById<LinearLayout>(R.id.adminMenu)
+        addBtn(adminMenu, "➕ Register Student") { startActivity(Intent(this, AddStudentActivity::class.java)) }
+        addBtn(adminMenu, "✅ User Approvals") { startActivity(Intent(this, AdminUsersActivity::class.java)) }
+
         val menu = findViewById<LinearLayout>(R.id.menu)
-        fun btn(label: String, click: () -> Unit) {
-            menu.addView(MaterialButton(this).apply {
-                text = label; cornerRadius = 100
-                backgroundTintList = ColorStateList.valueOf(getColor(R.color.bs_accent))
-                setTextColor(getColor(R.color.bs_on_accent))
-                setOnClickListener { click() }
-            })
-        }
         modules.forEach { (t, e) ->
-            btn(t) { startActivity(Intent(this, ModuleActivity::class.java).putExtra("title", t).putExtra("endpoint", e)) }
+            addBtn(menu, t) { startActivity(Intent(this, ModuleActivity::class.java).putExtra("title", t).putExtra("endpoint", e)) }
         }
-        btn("⚙️ Settings") { startActivity(Intent(this, SettingsActivity::class.java)) }
-        btn("❓ Help") { startActivity(Intent(this, HelpActivity::class.java)) }
-        btn("Logout") {
+        addBtn(menu, "⚙️ Settings") { startActivity(Intent(this, SettingsActivity::class.java)) }
+        addBtn(menu, "❓ Help") { startActivity(Intent(this, HelpActivity::class.java)) }
+        addBtn(menu, "Logout") {
             lifecycleScope.launch {
                 try { BsApi.api.logout() } catch (e: Exception) { Log.e("MainActivity", "Logout call failed", e) }
                 BsApi.cookies.clear()
@@ -45,14 +52,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Reload stats + saved settings every time the screen shows, so settings apply immediately
+    // Reload stats + saved settings + role every time the screen shows
     override fun onResume() {
         super.onResume()
         lifecycleScope.launch {
             try {
                 val s = BsApi.api.stats()
-                val set = BsApi.api.getSettings().settings
+                val resp = BsApi.api.getSettings()
+                val set = resp.settings
                 val large = set?.text_size == "large"
+                findViewById<View>(R.id.adminMenu).visibility = if (resp.profile?.Role == "Admin") View.VISIBLE else View.GONE
                 findViewById<View>(R.id.flipper).visibility = if (set?.show_slider == 1) View.VISIBLE else View.GONE
                 val grid = findViewById<GridLayout>(R.id.grid)
                 grid.removeAllViews()

@@ -18,5 +18,7 @@
         <activity android:name=".ModuleActivity" android:exported="false"/>
         <activity android:name=".SettingsActivity" android:exported="false"/>
         <activity android:name=".HelpActivity" android:exported="false"/>
+        <activity android:name=".AdminUsersActivity" android:exported="false"/>
+        <activity android:name=".AddStudentActivity" android:exported="false"/>
     </application>
 </manifest>

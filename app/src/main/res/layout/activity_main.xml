@@ -40,6 +40,9 @@
         </ViewFlipper>
         <GridLayout android:id="@+id/grid" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:columnCount="2" android:padding="10dp"/>
+        <LinearLayout android:id="@+id/adminMenu" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="16dp"
+            android:visibility="gone"/>
         <LinearLayout android:id="@+id/menu" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="vertical" android:padding="16dp"/>
     </LinearLayout>
