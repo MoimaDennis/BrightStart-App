@@ -10,7 +10,8 @@ jobs:
           distribution: temurin
           java-version: 17
       - run: chmod +x gradlew
-      - run: ./gradlew test assembleDebug
+      - name: Build and test (retry once if the download fails)
+        run: ./gradlew test assembleDebug || (sleep 30 && ./gradlew test assembleDebug)
       - uses: actions/upload-artifact@v4
         with:
           name: app-debug
