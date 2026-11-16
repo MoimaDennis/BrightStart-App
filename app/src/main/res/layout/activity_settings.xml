@@ -1,32 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical" android:padding="24dp" android:background="@color/bs_bg">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/bs_bg">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="20dp">
 
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="⚙️ Settings" android:fontFamily="serif" android:textStyle="bold"
-        android:textSize="26sp" android:textColor="@color/bs_text"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    <TextView style="@style/Bs.Heading" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="⚙️ Settings" android:textSize="28sp"/>
+    <TextView style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="Choose how Bright Start looks for you. Changes are saved to your account."
-        android:textSize="14sp" android:textColor="@color/bs_muted" android:layout_marginBottom="20dp"/>
+        android:textSize="14sp" android:textColor="@color/bs_muted" android:layout_marginTop="6dp" android:layout_marginBottom="20dp"/>
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:padding="20dp" android:background="@drawable/bs_card">
-        <androidx.appcompat.widget.SwitchCompat android:id="@+id/swDark" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="Dark theme" android:textColor="@color/bs_text"/>
-        <androidx.appcompat.widget.SwitchCompat android:id="@+id/swLarge" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="Large text" android:textColor="@color/bs_text"
-            android:layout_marginTop="16dp"/>
-        <androidx.appcompat.widget.SwitchCompat android:id="@+id/swSlider" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:text="Show dashboard banner slider" android:textColor="@color/bs_text"
-            android:layout_marginTop="16dp"/>
+        android:orientation="vertical" android:padding="22dp" android:background="@drawable/bs_card">
+        <androidx.appcompat.widget.SwitchCompat android:id="@+id/swDark" style="@style/Bs.Body" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Dark theme"/>
+        <androidx.appcompat.widget.SwitchCompat android:id="@+id/swLarge" style="@style/Bs.Body" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Large text" android:layout_marginTop="18dp"/>
+        <androidx.appcompat.widget.SwitchCompat android:id="@+id/swSlider" style="@style/Bs.Body" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Show dashboard banner slider" android:layout_marginTop="18dp"/>
+        <Button android:id="@+id/btnSave" style="@style/Bs.Button" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="💾 Save settings" android:layout_marginTop="20dp"/>
     </LinearLayout>
 
-    <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="💾 Save settings" android:layout_marginTop="24dp"
-        android:backgroundTint="@color/bs_accent" android:textColor="@color/bs_on_accent" app:cornerRadius="50dp"/>
-    <Button android:id="@+id/btnLogout" android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="Log out"
-        android:backgroundTint="@color/bs_accent" android:textColor="@color/bs_on_accent" app:cornerRadius="50dp"/>
+    <!-- My profile -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="22dp" android:background="@drawable/bs_card" android:layout_marginTop="16dp">
+        <TextView style="@style/Bs.Heading" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="👤 My Profile" android:textSize="22sp"/>
+        <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Full name" android:layout_marginTop="16dp" android:layout_marginBottom="6dp"/>
+        <EditText android:id="@+id/etFullName" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName"/>
+        <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email (cannot be changed)" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+        <TextView android:id="@+id/tvEmail" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:alpha="0.6"/>
+        <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Role" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+        <TextView android:id="@+id/tvRole" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:alpha="0.6"/>
+        <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sign-in method" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+        <TextView android:id="@+id/tvProvider" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:alpha="0.6"/>
+        <Button android:id="@+id/btnProfile" style="@style/Bs.Button" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="💾 Update Profile" android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+    <!-- Change password -->
+    <LinearLayout android:id="@+id/cardPassword" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="22dp" android:background="@drawable/bs_card" android:layout_marginTop="16dp">
+        <TextView style="@style/Bs.Heading" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="🔒 Change Password" android:textSize="22sp"/>
+        <LinearLayout android:id="@+id/passwordForm" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Current password" android:layout_marginTop="16dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etCurrent" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New password" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etNew" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="8+ characters, letters and numbers" android:inputType="textPassword"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Confirm new password" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etConfirmNew" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword"/>
+            <Button android:id="@+id/btnPassword" style="@style/Bs.Button" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="🔑 Change Password" android:layout_marginTop="20dp"/>
+        </LinearLayout>
+        <TextView android:id="@+id/tvGoogleNote" style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="14sp" android:textColor="@color/bs_muted" android:layout_marginTop="10dp" android:visibility="gone"
+            android:text="You signed in with Google, so your password is managed by Google."/>
+    </LinearLayout>
+
+    <Button android:id="@+id/btnLogout" style="@style/Bs.Button" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Log out" android:layout_marginTop="20dp"/>
 </LinearLayout>
+</ScrollView>

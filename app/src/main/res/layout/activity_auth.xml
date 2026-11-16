@@ -4,44 +4,90 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/bs_bg" android:fillViewport="true">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:gravity="center_horizontal" android:padding="24dp">
+        android:orientation="vertical" android:gravity="center_horizontal" android:padding="20dp">
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="🎓" android:textSize="48sp" android:layout_marginTop="24dp"/>
+            android:text="🎓" android:textSize="44sp" android:layout_marginTop="24dp"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Bright Start" android:fontFamily="serif" android:textStyle="bold"
-            android:textSize="30sp" android:textColor="@color/bs_text"/>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Education Support System – Staff Login" android:textSize="14sp"
-            android:textColor="@color/bs_muted" android:layout_marginBottom="24dp"/>
+            style="@style/Bs.Heading" android:text="Bright Start" android:textSize="29sp"/>
+        <TextView android:id="@+id/tvSub" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            style="@style/Bs.Body" android:textColor="@color/bs_muted" android:textSize="14sp"
+            android:text="Education Support System – Staff Login" android:layout_marginTop="6dp" android:layout_marginBottom="22dp"/>
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:padding="20dp" android:background="@drawable/bs_card">
+            android:orientation="vertical" android:padding="24dp" android:background="@drawable/bs_card">
 
-            <EditText android:id="@+id/etName" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="Full name" android:inputType="textPersonName" android:visibility="gone"
-                android:textColor="@color/bs_text" android:textColorHint="@color/bs_muted"/>
-            <EditText android:id="@+id/etUsername" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="Username" android:inputType="text" android:visibility="gone"
-                android:textColor="@color/bs_text" android:textColorHint="@color/bs_muted"/>
-            <EditText android:id="@+id/etEmail" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="Email" android:inputType="textEmailAddress"
-                android:textColor="@color/bs_text" android:textColorHint="@color/bs_muted"/>
-            <EditText android:id="@+id/etPassword" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="Password (min 8, letter + number)" android:inputType="textPassword"
-                android:textColor="@color/bs_text" android:textColorHint="@color/bs_muted"/>
+            <LinearLayout android:id="@+id/grpName" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Full Name" android:layout_marginBottom="6dp"/>
+                <EditText android:id="@+id/etName" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Thabo Nkosi" android:inputType="textPersonName"/>
+            </LinearLayout>
 
-            <Button android:id="@+id/btnSubmit" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Log in" android:layout_marginTop="16dp"
-                android:backgroundTint="@color/bs_accent" android:textColor="@color/bs_on_accent" app:cornerRadius="50dp"/>
-            <Button android:id="@+id/btnGoogle" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Continue with Google"
-                android:backgroundTint="@color/bs_accent" android:textColor="@color/bs_on_accent" app:cornerRadius="50dp"/>
-            <TextView android:id="@+id/tvToggle" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="No account? Register" android:gravity="center" android:padding="16dp"
-                android:textColor="@color/bs_accent"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Email Address" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etEmail" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="you@brightstart.org" android:inputType="textEmailAddress"/>
+
+            <LinearLayout android:id="@+id/grpUsername" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Username (min 4 characters)" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+                <EditText android:id="@+id/etUsername" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="thabo123" android:inputType="text"/>
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/grpRole" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Your Role" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+                <Spinner android:id="@+id/spRole" style="@style/Bs.Spinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Password" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etPassword" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Enter your password" android:inputType="textPassword"/>
+
+            <LinearLayout android:id="@+id/grpConfirm" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:visibility="gone">
+                <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Confirm Password" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+                <EditText android:id="@+id/etConfirm" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:hint="Repeat your password" android:inputType="textPassword"/>
+                <TextView style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:background="@drawable/bs_alert" android:padding="14dp" android:textSize="13sp"
+                    android:textColor="@color/bs_warning" android:layout_marginTop="16dp"
+                    android:text="⚠️ After registering, your account will be pending verification by an Administrator before you can log in."/>
+            </LinearLayout>
+
+            <Button android:id="@+id/btnSubmit" style="@style/Bs.Button" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Login →" android:layout_marginTop="22dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="14dp" android:layout_marginBottom="6dp">
+                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="@color/bs_card_border"/>
+                <TextView style="@style/Bs.Body" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="or" android:textSize="13sp" android:textColor="@color/bs_muted" android:padding="10dp"/>
+                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="@color/bs_card_border"/>
+            </LinearLayout>
+
+            <Button android:id="@+id/btnGoogle" style="@style/Bs.ButtonGoogle" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Continue with Google" app:icon="@drawable/ic_google" app:iconTint="@null"/>
+
             <ProgressBar android:id="@+id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal" android:visibility="gone"/>
+                android:layout_gravity="center_horizontal" android:layout_marginTop="12dp" android:visibility="gone"/>
+
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/bs_card_border" android:layout_marginTop="20dp"/>
+            <TextView android:id="@+id/tvAsk" style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:gravity="center" android:textSize="14sp" android:textColor="@color/bs_muted"
+                android:text="Don't have an account?" android:layout_marginTop="16dp" android:layout_marginBottom="10dp"/>
+            <Button android:id="@+id/tvToggle" style="@style/Bs.Button" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" android:text="✏️ Register New Account"/>
+            <TextView android:id="@+id/tvHelp" style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:gravity="center" android:textSize="14sp" android:textColor="@color/bs_accent"
+                android:text="❓ Need help signing in?" android:padding="16dp"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -11,6 +11,7 @@ class AddStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_student)
+        if (!Session.isAdmin(this)) { finish(); return }   // admin only
         val spGender = findViewById<Spinner>(R.id.spGender)
         spGender.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listOf("Male", "Female", "Other"))
         val dateRule = Regex("^\\d{4}-\\d{2}-\\d{2}$")

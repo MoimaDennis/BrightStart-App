@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/bs_bg">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+        <TextView style="@style/Bs.Heading" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="📋 Enrol Student" android:textSize="28sp" android:layout_marginBottom="16dp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="22dp" android:background="@drawable/bs_card">
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Student" android:layout_marginBottom="6dp"/>
+            <Spinner android:id="@+id/spStudent" style="@style/Bs.Spinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Program (Active only)" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <Spinner android:id="@+id/spProgram" style="@style/Bs.Spinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enrolment date" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etDate" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="YYYY-MM-DD" android:inputType="date"/>
+            <Button android:id="@+id/btnEnrol" style="@style/Bs.Button" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Enrol student" android:layout_marginTop="22dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

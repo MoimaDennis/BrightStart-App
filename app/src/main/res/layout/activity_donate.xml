@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/bs_bg">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+
+        <LinearLayout android:id="@+id/receipt" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="22dp" android:background="@drawable/bs_card"
+            android:layout_marginBottom="18dp" android:visibility="gone">
+            <TextView style="@style/Bs.Heading" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:gravity="center" android:textSize="20sp" android:text="Bright Start Education Initiative"/>
+            <TextView style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:gravity="center" android:textSize="13sp" android:textColor="@color/bs_muted" android:text="Donation Receipt" android:layout_marginBottom="12dp"/>
+            <TextView android:id="@+id/tvReceipt" style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:lineSpacingExtra="6dp"/>
+            <TextView style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:gravity="center" android:textSize="13sp" android:textColor="@color/bs_muted" android:layout_marginTop="12dp"
+                android:text="Thank you for supporting Bright Start Education Initiative! 💚"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="22dp" android:background="@drawable/bs_card">
+            <TextView style="@style/Bs.Heading" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="24sp" android:text="💚 Make a Donation"/>
+            <TextView style="@style/Bs.Body" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="14sp" android:textColor="@color/bs_muted" android:layout_marginTop="6dp"
+                android:text="Support Bright Start Education Initiative directly. Every contribution helps a child access quality education."/>
+
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Your Name *" android:layout_marginTop="16dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etDonor" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Contact Email *" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etContact" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Donation Amount (R) *" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etAmount" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="100.00" android:inputType="numberDecimal"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Donation Type *" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <Spinner android:id="@+id/spType" style="@style/Bs.Spinner" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/Bs.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Notes (optional)" android:layout_marginTop="14dp" android:layout_marginBottom="6dp"/>
+            <EditText android:id="@+id/etNotes" style="@style/Bs.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Any message..." android:inputType="textMultiLine" android:minLines="2"/>
+            <Button android:id="@+id/btnDonate" style="@style/Bs.Button" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="💚 Donate Now" android:layout_marginTop="22dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -24,6 +24,8 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var etUsername: EditText
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
+    private lateinit var etConfirm: EditText
+    private lateinit var spRole: Spinner
     private lateinit var btnSubmit: Button
     private lateinit var tvToggle: TextView
     private lateinit var progress: ProgressBar
@@ -60,16 +62,22 @@ class AuthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_auth)
         etName = findViewById(R.id.etName); etUsername = findViewById(R.id.etUsername)
         etEmail = findViewById(R.id.etEmail); etPassword = findViewById(R.id.etPassword)
+        etConfirm = findViewById(R.id.etConfirm); spRole = findViewById(R.id.spRole)
         btnSubmit = findViewById(R.id.btnSubmit); tvToggle = findViewById(R.id.tvToggle)
         progress = findViewById(R.id.progress)
+        spRole.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listOf("Volunteer", "Coordinator", "Management"))
 
         tvToggle.setOnClickListener {
             registerMode = !registerMode
             val v = if (registerMode) View.VISIBLE else View.GONE
-            etName.visibility = v; etUsername.visibility = v
-            btnSubmit.text = if (registerMode) "Register" else "Log in"
-            tvToggle.text = if (registerMode) "Have an account? Log in" else "No account? Register"
+            listOf(R.id.grpName, R.id.grpUsername, R.id.grpRole, R.id.grpConfirm).forEach { findViewById<View>(it).visibility = v }
+            findViewById<View>(R.id.btnGoogle).visibility = if (registerMode) View.GONE else View.VISIBLE
+            findViewById<TextView>(R.id.tvSub).text = if (registerMode) "Create your staff account" else "Education Support System – Staff Login"
+            findViewById<TextView>(R.id.tvAsk).text = if (registerMode) "Already have an account?" else "Don't have an account?"
+            btnSubmit.text = if (registerMode) "✅ Create Account" else "Login →"
+            tvToggle.text = if (registerMode) "Back to Login" else "✏️ Register New Account"
         }
+        findViewById<TextView>(R.id.tvHelp).setOnClickListener { startActivity(Intent(this, HelpActivity::class.java)) }
         btnSubmit.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val pw = etPassword.text.toString()
@@ -80,15 +88,23 @@ class AuthActivity : AppCompatActivity() {
                 val un = etUsername.text.toString().trim()
                 if (name.length < 2) { etName.error = "Enter your full name"; return@setOnClickListener }
                 if (un.length < 4) { etUsername.error = "Min 4 characters"; return@setOnClickListener }
-                callApi { toast(BsApi.api.register(RegisterBody(name, email, un, pw)).message ?: "Done") }
+                if (pw != etConfirm.text.toString()) { etConfirm.error = "Passwords do not match"; return@setOnClickListener }
+                val role = spRole.selectedItem.toString()
+                callApi { toast(BsApi.api.register(RegisterBody(name, email, un, pw, role)).message ?: "Done") }
             } else {
                 callApi {
+                    Session.clearUser(this@AuthActivity)
                     val r = BsApi.api.login(LoginBody(email, pw))
-                    if (r.success) { Log.d(TAG, "Login ok"); goHome() } else toast(r.message ?: "Login failed")
+                    if (r.success) {
+                        Log.d(TAG, "Login ok")
+                        Session.saveUser(this@AuthActivity, r.user?.FullName, r.user?.Email, r.user?.Role)
+                        goHome()
+                    } else toast(r.message ?: "Login failed")
                 }
             }
         }
         findViewById<Button>(R.id.btnGoogle).setOnClickListener {
+            Session.clearUser(this)
             googleClient.signOut().addOnCompleteListener { googleLauncher.launch(googleClient.signInIntent) }
         }
     }
@@ -103,4 +119,3 @@ class AuthActivity : AppCompatActivity() {
     private fun goHome() { startActivity(Intent(this, MainActivity::class.java)); finish() }
     private fun toast(m: String) = Toast.makeText(this, m, Toast.LENGTH_LONG).show()
 }
-

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1"
-    android:layout_margin="6dp" android:padding="16dp" android:orientation="vertical" android:background="@drawable/bs_card">
+    android:layout_margin="6dp" android:padding="18dp" android:orientation="vertical" android:background="@drawable/bs_card">
+    <TextView android:id="@+id/tvIcon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="24sp"/>
     <TextView android:id="@+id/tvNum" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:fontFamily="serif" android:textStyle="bold" android:textColor="@color/bs_accent" android:textSize="30sp"/>
+        style="@style/Bs.Heading" android:textColor="@color/bs_accent" android:textSize="30sp" android:layout_marginTop="4dp"/>
     <TextView android:id="@+id/tvLabel" android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:textColor="@color/bs_muted" android:textSize="13sp"/>
+        style="@style/Bs.Body" android:textColor="@color/bs_muted" android:textSize="13sp"/>
 </LinearLayout>

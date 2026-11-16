@@ -4,9 +4,16 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bs_bg">#F4F8F1</color>
     <color name="bs_card">#FFFFFF</color>
+    <color name="bs_card_border">#402D7A3E</color>
     <color name="bs_text">#14301F</color>
     <color name="bs_muted">#4B6455</color>
     <color name="bs_accent">#2D7A3E</color>
     <color name="bs_on_accent">#FFFFFF</color>
     <color name="bs_bar">#E3EFE0</color>
+    <color name="bs_nav">#FFFFFF</color>
+    <color name="bs_banner">#E9F1E6</color>
+    <color name="bs_input_bg">#FFFFFF</color>
+    <color name="bs_input_border">#592D7A3E</color>
+    <color name="bs_warning">#8A5A00</color>
+    <color name="bs_logout">#B3261E</color>
 </resources>

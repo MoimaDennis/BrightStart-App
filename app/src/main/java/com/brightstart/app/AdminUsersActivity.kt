@@ -18,6 +18,7 @@ class AdminUsersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_module)
+        if (!Session.isAdmin(this)) { finish(); return }   // admin only
         findViewById<TextView>(R.id.tvTitle).text = "User approvals"
         box = findViewById(R.id.box)
         load()
